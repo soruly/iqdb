@@ -1,4 +1,4 @@
 language: cpp
 before_install:
-  - sudo apt-get install -y libgd-dev libpng12-dev libjpeg62-dev
+  - sudo apt-get install -y libgd-dev libpng-dev libjpeg-dev
 script: make
