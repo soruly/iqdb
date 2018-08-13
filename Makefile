@@ -73,8 +73,8 @@ haar.le.o :
 .ALWAYS:
 
 ifeq (${IMG_LIB},GD)
-IMG_libs = -lgd -ljpeg -lpng $(shell gdlib-config --ldflags; gdlib-config --libs)
-IMG_flags = $(shell gdlib-config --cflags)
+IMG_libs = -lgd -ljpeg -lpng $(shell pkg-config --libs gdlib)
+IMG_flags = $(shell pkg-config --cflags gdlib)
 IMG_objs = resizer.o
 override DEFS+=-DLIB_GD
 else
@@ -95,7 +95,7 @@ endif
 	g++ -o $@ $^ ${CFLAGS} ${LDFLAGS} ${IMG_libs} ${DEFS} ${EXTRADEFS}
 
 test-resizer : test-resizer.o resizer.o debug.o
-	g++ -o $@ $^ ${CFLAGS} ${LDFLAGS} -g -lgd -ljpeg -lpng ${DEFS} ${EXTRADEFS} `gdlib-config --ldflags`
+	g++ -o $@ $^ ${CFLAGS} ${LDFLAGS} -g -lgd -ljpeg -lpng ${DEFS} ${EXTRADEFS} `pkg-config --libs gdlib`
 
 %.o : %.cpp
 	g++ -c -o $@ $< -O2 ${CFLAGS} -DNDEBUG -Wall -DLinuxBuild -g ${IMG_flags} ${DEFS} ${EXTRADEFS}
