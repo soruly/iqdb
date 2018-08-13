@@ -1,1 +1,4 @@
 language: cpp
+before_install:
+  - sudo apt-get install -y libgd2-xpm-dev libpng12-dev libjpeg62-dev
+script: make
