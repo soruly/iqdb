@@ -98,8 +98,8 @@ union image_id_index {
 	bool operator==(const image_id_index& other) const { return id == other.id; }
 	bool operator!=(const image_id_index& other) const { return id != other.id; }
 
-	operator size_t&() { return index; }
-	operator imageId&() { return id; }
+//	operator size_t&() { return index; }
+//	operator imageId&() { return id; }
 };
 
 typedef std::vector<image_id_index> IdIndex_list;
