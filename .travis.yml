@@ -2,11 +2,13 @@ language: cpp
 before_install:
   - sudo apt-get install -y libgd-dev libpng-dev libjpeg-dev
 script: make
+before_deploy:
+  - git config --local user.name "soruly"
+  - git config --local user.email "soruly@gmail.com"
+  - git tag "$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"
 deploy:
   provider: releases
-  api_key: 1df2767507c2985581d9f5b2afe6e8f7acda7232
+  api_key: "f54315e48e4995bc3da9192dc1d2fb7552c65fb0"
   file: "iqdb"
   skip_cleanup: true
-  on:
-    tags: true
 
